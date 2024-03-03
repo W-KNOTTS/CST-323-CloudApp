@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+	<body>
+		<h2>Update User</h2>
+		<form action="#" th:action="@{/update}" th:object="${user}" method="post">
+		    <input type="hidden" th:field="*{id}" />
+		    <div>
+		        <label for="name">Name: </label>
+		        <input type="text" th:field="*{name}" id="name" />
+		    </div>
+		    <div>
+		        <label for="email">Email: </label>
+		        <input type="email" th:field="*{email}" id="email" />
+		    </div>
+		    <div>
+		        <button type="submit" class="button-link">Update User</button>
+		    </div>
+		</form>
+		<a href="/all" class="button-link">Back to List</a>
+	    <div th:insert="~{fragments/footer :: common-footer}"></div>
+
+	</body>
+</html>
