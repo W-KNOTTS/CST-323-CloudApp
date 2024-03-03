@@ -35,7 +35,11 @@ body {
 
 .button-link:hover {
     background-color: var(--bs-hover);
+<<<<<<< Updated upstream
     color: #d9534f;
+=======
+    color: #d9534f; 
+>>>>>>> Stashed changes
 }
 
 .footer {
