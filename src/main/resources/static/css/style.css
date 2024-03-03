@@ -35,7 +35,7 @@ body {
 
 .button-link:hover {
     background-color: var(--bs-hover);
-    color: #d9534f; /* Change hover text color if needed */
+    color: #d9534f;
 }
 
 .footer {
