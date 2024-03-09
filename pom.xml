@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>CloudActivityAppCST323</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0-TESTAPP</version>
 	<name>CloudActivityAppCST323</name>
 	<description>CloudActivityApp project for CST323</description>
 	<properties>
