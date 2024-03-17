@@ -88,6 +88,7 @@ goto MENU
 
 :DEPLOY_DOCKER_IMAGE_HEROKU
 cls
+echo docker build -t myapp .
 echo Logging in to Heroku...
 heroku login
 echo Logging in to Heroku Container Registry...
