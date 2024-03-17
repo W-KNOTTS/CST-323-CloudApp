@@ -8,7 +8,8 @@ echo 2. Login to Azure Container Registry
 echo 3. Push Docker image to Azure Container Registry
 echo 4. Delete Azure Container Instance
 echo 5. Create Azure Container Instance
-echo 6. Exit
+echo 6. Login to Heroku and Deploy Docker Image
+echo 7. Exit
 
 set /p choice=Enter your choice: 
 
@@ -23,6 +24,8 @@ if "%choice%"=="1" (
 ) else if "%choice%"=="5" (
     call :CREATE_ACI
 ) else if "%choice%"=="6" (
+    call :DEPLOY_DOCKER_IMAGE_HEROKU
+) else if "%choice%"=="7" (
     exit
 ) else (
     echo Invalid choice. Please try again.
@@ -46,7 +49,6 @@ call az acr login --name activity2cst323willk
 pause
 goto MENU
 
-
 :PUSH_DOCKER_IMAGE
 cls
 echo Tagging Docker image...
@@ -56,14 +58,12 @@ docker push activity2cst323willk.azurecr.io/myapp:latest
 pause
 goto MENU
 
-
 :DELETE_ACI
 cls
 echo Deleting Azure Container Instance...
 call az container delete --resource-group MyResourceGroup --name activity2container --yes
 pause
 goto MENU
-
 
 :CREATE_ACI
 cls
@@ -86,3 +86,16 @@ call az container create ^
 pause
 goto MENU
 
+:DEPLOY_DOCKER_IMAGE_HEROKU
+cls
+echo Logging in to Heroku...
+heroku login
+echo Logging in to Heroku Container Registry...
+heroku container:login
+echo Tagging and pushing Docker image to Heroku...
+docker tag myapp:latest registry.heroku.com/activity3-app/web
+docker push registry.heroku.com/activity3-app/web
+echo Releasing Docker image on Heroku...
+heroku container:release web --app activity3-app
+pause
+goto MENU
